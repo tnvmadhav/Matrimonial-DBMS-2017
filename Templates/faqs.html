@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+   <h1 class="Headtext">Frequently asked Questions</h1><br><br>
+ 
+   	
+	{% for faqs in faqs %}
+	{% if faqs.questions and faqs.answers %}
+    <ol><h1>{{faqs.questions}}</h1></ol>
+    <h3 class="answertext">{{faqs.answers}}</h3><br>
+    {% endif %}
+	{% endfor %}
+	
+</table>
+
+
+<style type="text/css">
+	
+
+
+	.Headtext{
+
+        font-size: 50;
+		color: Black;
+		font-family: monospace;
+	}
+	.answertext{
+
+        margin-left: 60px;
+		color: green;
+
+	}
+</style>
+
+
+<div>
+<h1 align="center">Ask a Question</h1>
+<form method='GET'>
+ <div class='form-group'>
+   <label>Question</label>
+   <input type='text' name='question' class='form-control' value={{request.form.question}}>
+ </div>
+ <input type="submit" class = "btn btn-success" value="Submit">		
+</form>
+</div>
+
+{% endblock %}
+
+
+
+
+

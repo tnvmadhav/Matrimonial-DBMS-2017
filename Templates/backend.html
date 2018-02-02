@@ -1,0 +1,259 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block body %}
+<div class="container">
+<h1>Welcome <small>Admin {{session.username}}.</small></h1>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#users">Users</a></li>
+    <li><a data-toggle="tab" href="#admin">Admin<small>(s)</small></a></li>
+    <li><a data-toggle="tab" href="#faqs">FAQs</a></li>
+    <li><a data-toggle="tab" href="#menu3">User Basic Details</a></li>
+    <li><a data-toggle="tab" href="#menu4">Partner Specification table</a></li>
+    <li><a data-toggle="tab" href="#menu5">Report</a></li>
+    <li><a data-toggle="tab" href="#menu6">Messages</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="users" class="tab-pane fade in active">
+      <h1>List of Users</h1>
+   <table class="table table-striped">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>E-Mail</th>
+		<th>Username</th>
+		<th>Registered-Date</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	{% for users in users %}
+    <tr>
+    	<td>{{users.id}}</td>
+    	<td>{{users.name}}</td>
+    	<td>{{users.email}}</td>
+    	<td>{{users.username}}</td>
+    	<td>{{users.register_data}}</td>
+    	<td></td>
+    	<td></td>
+	</tr>
+	{% endfor %}
+</table><br><br>
+<form class="form-group" action="{{url_for('delete_user')}}", method="POST">
+	 <label>Enter User Id for deletion</label>
+   <input type='text' name='id' class='form-control' value={{id}}><br>
+<input type="submit" class = "btn btn-danger" value="Delete">
+</form>
+    </div>
+    <div id="admin" class="tab-pane fade">
+     <h1>List of Admin(s)</h1>
+   <table class="table table-striped">
+	<tr>
+		<th>Admin_Id</th>
+		<th>Admin_Username</th>
+		<th>Admin_Registered-Date</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	{% for admin in admin %}
+    <tr>
+    	<td>{{admin.admin_id}}</td>
+    	<td>{{admin.admin_username}}</td>
+    	<td>{{admin.admin_register_data}}</td>
+    	<td></td>
+    	<td></td>
+	</tr>
+	{% endfor %}
+</table>
+    </div>
+    <div id="faqs" class="tab-pane fade">
+      <h3>FAQS</h3>
+   <table class="table table-striped">
+	<tr>
+		<th>FAQ_Id</th>
+		<th>Questions</th>
+		<th>Answers</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	{% for faqs in faqs %}
+    <tr>
+    	<td>{{faqs.faq_id}}</td>
+    	<td>{{faqs.questions}}</td>
+    	<td>{{faqs.answers}}</td>
+    	<td></td>
+    	<td></td>
+	</tr>
+	{% endfor %}
+</table><br><br>
+<form class="form-group" action="{{url_for('delete_FAQ')}}", method="POST">
+   <label>Enter FAQ Id for deletion</label>
+   <input type='text' name='faq_id' class='form-control' value={{faq_id}}><br>
+<input type="submit" class = "btn btn-danger" value="Delete">
+</form>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+     <h1>Basic User details</h1>
+   <table class="table table-striped">
+	<tr>
+		<th>Profile_Id</th>
+		<th>Age</th>
+		<th>Gender</th>
+		<th>Date of Birth</th>
+		<th>Religion</th>
+		<th>Caste</th>
+		<th>Mother Tongue</th>
+		<th>Country</th>
+		<th>State</th>
+		<th>City</th>
+		<th>Marital Status</th>
+		<th>Education Level</th>
+		<th>Education Field</th>
+		<th>Employed In</th>
+		<th>Employed As</th>
+		<th>Annual Income</th>
+		<th></th>
+	</tr>
+
+	{% for user_profile_details in user_profile_details %}
+    <tr>
+    	<td>{{user_profile_details.profile_id}}</td>
+    	<td>{{user_profile_details.age}}</td>
+    	<td>{{user_profile_details.gender}}</td>
+    	<td>{{user_profile_details.date_of_birth}}</td>
+    	<td>{{user_profile_details.religion}}</td>
+    	<td>{{user_profile_details.caste}}</td>
+    	<td>{{user_profile_details.mother_tongue}}</td>
+    	<td>{{user_profile_details.living_in_country}}</td>
+    	<td>{{user_profile_details.state}}</td>
+    	<td>{{user_profile_details.city}}</td>
+    	<td>{{user_profile_details.marital_status}}</td>
+    	<td>{{user_profile_details.education_level}}</td>
+    	<td>{{user_profile_details.education_field}}</td>
+    	<td>{{user_profile_details.employed_in}}</td>
+    	<td>{{user_profile_details.employed_as}}</td>
+    	<td>{{user_profile_details.annual_income}}</td>
+	</tr>
+	{% endfor %}
+</table>
+    </div>
+    <div id="menu4" class="tab-pane fade">
+       <h1>Partner specification tables</h1>
+       <table class="table table-striped">
+  <tr>
+    <th>Profile_Id</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Marital Status</th>
+    <th>Have Children</th>
+    <th>Height</th>
+    <th>Mother Tongue</th>
+    <th>Physical Status</th>
+    <th>Religion</th>
+    <th>Education Level</th>
+    <th>Education Field</th>
+    <th>Employed As</th>
+    <th>Living In Country</th>
+    <th>State</th>
+    <th>Smoking</th>
+    <th>Drinking</th>
+    <th></th>
+  </tr>
+  {%  for partner_sp  in partner_sp %}
+ <tr>
+      <td>{{partner_sp.profile_id}}</td>
+      <td>{{partner_sp.email}}</td>
+      <td>{{partner_sp.age}}</td>
+      <td>{{partner_sp.marital_status}}</td>
+      <td>{{partner_sp.have_children}}</td>
+      <td>{{partner_sp.height}}</td>
+      <td>{{partner_sp.mother_tongue}}</td>
+      <td>{{partner_sp.physical_status}}</td>
+      <td>{{partner_sp.religion}}</td>
+      <td>{{partner_sp.education_level}}</td>
+      <td>{{partner_sp.education_field}}</td>
+      <td>{{partner_sp.employed_as}}</td>
+      <td>{{partner_sp.living_in_country}}</td>
+      <td>{{partner_sp.state}}</td>
+      <td>{{partner_sp.is_smoke}}</td>
+      <td>{{partner_sp.is_drink}}</td>
+  </tr>
+    {% endfor %}
+  </table>
+
+    </div>
+    <div id="menu5" class="tab-pane fade in active">
+      <h1>Partner report tables</h1>
+       <table class="table table-striped">
+  <tr>
+    <th>Report source Id</th>
+    <th>Report Target Id</th>
+    <th>Status</th>
+    <th>Marriage_Date</th>
+    <th>Remarks</th>
+  </tr>
+  {% for report in report %}
+  <tr>
+     <td>{{report.report_source_id}}</td>
+     <td>{{report.report_target_id}}</td>
+     <td>{{report.status}}</td>
+     <td>{{report.marriage_date}}</td>
+     <td>{{report.remarks}}</td>
+  </tr>
+  {% endfor %}
+</table><br><br>
+<form class="form-group" action="{{url_for('delete_report')}}", method="POST">
+   <label>Enter Report Source Id for deletion</label>
+   <input type='text' name='report_source_id' class='form-control' value={{report_source_id}}><br>
+<input type="submit" class = "btn btn-danger" value="Delete">
+</form>
+</div>
+ <div id="menu6" class="tab-pane fade in active">
+      <h1>Messages</h1>
+      <table class="table table-striped">
+         <tr>
+    <th>Message Id</th>
+    <th>Sender's Username</th>
+    <th>Source Id</th>
+    <th>Target Id</th>
+    <th>Title</th>
+    <th>Message</th>
+    <th>Message Date</th>
+  </tr>
+  {% for messages in messages %}
+  <tr>
+     <td>{{messages.msgid}}</td>
+     <td>{{messages.susername}}</td>
+     <td>{{messages.source_id}}</td>
+     <td>{{messages.target_id}}</td>
+     <td>{{messages.title}}</td>
+     <td>{{messages.message}}</td>
+     <td>{{messages.msgdate}}</td>
+  </tr>
+  {% endfor %}
+</table><br><br>
+<form class="form-group" action="{{url_for('delete_message')}}", method="POST">
+   <label>Enter Message Id for deletion</label>
+   <input type='text' name='id' class='form-control' value={{id}}><br>
+<input type="submit" class = "btn btn-danger" value="Delete">
+</form>
+</div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

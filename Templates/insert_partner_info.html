@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block body %}
+
+
+
+
+<div class="jumbotron">
+<h1 align="center">Insert Search Details<small><small>not all neccessary</small></small></h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="{{ url_for('search') }}">
+<div class="form-group">
+	{{render_field(form.email,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.age,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.marital_status,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.have_children,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.mother_tongue,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.physical_status,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.religion,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.education_level,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.education_field,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.employed_as,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.living_in_country,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.state,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.is_smoke,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.is_drink,class_="form-control")}}
+</div>
+<p><input type="submit" class = "btn btn-primary" value="Submit"></p>
+</form>
+</div>
+
+
+
+
+
+{% endblock %}

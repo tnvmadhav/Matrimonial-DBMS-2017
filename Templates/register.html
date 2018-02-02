@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+
+
+ {% block body %}
+<div class="jumbotron">
+	<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="10"
+  aria-valuemin="0" aria-valuemax="100" style="width:10%">
+    10% complete
+  </div>
+</div>
+<h5 align="center">Step 1</h5>
+<h1 align="center">Register</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+<div class="form-group">
+	{{render_field(form.name,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.email,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.username,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.password,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.confirm,class_="form-control")}}
+</div>
+<p><input type="submit" class = "btn btn-primary" value="Submit"></p>
+</form>
+</div>
+
+
+
+<style type="text/css">
+	
+	
+	.form-group{
+
+		opacity: 0.7;
+	}
+	.jumbotron{
+
+		opacity: 0.7;
+	}
+
+	body {
+    background: url("https://preview.ibb.co/bPaKiw/aaron_burden_304587.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+</style>
+
+   
+
+
+   
+
+ {% endblock %}

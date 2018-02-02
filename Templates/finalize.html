@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+
+
+ {% block body %}
+<div class="jumbotron">
+<h1 align="center">Finalize your life partner</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+<div class="form-group">
+	{{render_field(form.t_username,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.status,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.marriage_date,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.remarks,class_="form-control")}}
+</div>
+<p><input type="submit" class = "btn btn-primary" value="Submit"></p>
+</form>
+</div>
+
+
+
+<style type="text/css">
+	
+	
+	.form-group{
+
+		opacity: 0.7;
+	}
+	.jumbotron{
+
+		opacity: 0.7;
+	}
+
+	body {
+    background: url("https://preview.ibb.co/bPaKiw/aaron_burden_304587.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+</style>
+
+   
+
+
+   
+
+ {% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+
+
+ {% block body %}
+ <div class="parallax"></div>
+ <div class="jumbotron class-center">
+   <h1>Welcome.<span class="hometext">You are home.</span></h1>
+    <div>
+    <a class = "btn btn-success" href="/register">Get Started</a>
+   </div>
+</div>
+<div class="jumbotron class-center">
+   <h2>Successful stories</h2>
+   <p>"{{data['remarks']}}"</p>
+   <h5>The above couple(The users id - {{data['report_source_id']}} and {{data['report_target_id']}}) are married on {{data['marriage_date']}}.</h5>
+</div>
+
+
+
+<style type="text/css">
+	
+
+	.hometext{
+            font-size: 75;
+      		color: Green;
+	   
+	}
+    
+	.jumbotron{
+
+		opacity: 0.7;
+	}
+    .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    float: right;
+}
+
+ .card1 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+  .parallax {
+    /* The image used */
+    background: url("https://preview.ibb.co/kLyPGG/photo_1499224790938_c2518cab8b76.jpg")
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    padding: 2px 16px;
+}
+
+
+
+	body {
+     background: url("https://preview.ibb.co/kLyPGG/photo_1499224790938_c2518cab8b76.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+</style>
+ {% endblock %}

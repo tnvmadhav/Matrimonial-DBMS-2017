@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block body %}
+<div class="container">
+<h1>Image Input</h1>
+<form method = "POST" action = {{url_for(upload)}} enctype = "multipart/form-data">
+	<div class="form-group">
+		<label for="inputFile">Image input</label>
+		<input type="file" name=photo>
+	</div>
+	<button type= "submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+
+
+
+{% endbody %}

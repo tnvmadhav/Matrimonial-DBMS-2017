@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+
+
+
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h1>Dashboard <small>Welcome {{session.username}}</small></h1>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#users_info">Your information</a></li>
+    <li><a data-toggle="tab" href="#menu3">Your Basic Details</a></li>
+    <li><a data-toggle="tab" href="#image">Your Profile Image</a></li>
+    <li><a data-toggle="tab" href="#partner_specification">Partner Specifications</a></li>
+    <li><a data-toggle="tab" href="#messages">Messages and Inbox</a></li>
+    <li><a data-toggle="tab" href="#search">Partner Search</a></li>
+    <li><a data-toggle="tab" href="#lookup">Lookup</a></li>
+</ul>
+
+  <div class="tab-content">
+    <div id="users_info" class="tab-pane fade in active">
+    	<a class="btn btn-success" href="/user_details/form1">Add User details(if not provided before)</a>
+	<a class="btn btn-danger" href = "/delete_basic">Delete User details</a>bp
+    {% for users in users %}
+    <h3> Name :<div class='Headtext'>{{users.name}}</div></h3>
+    <h3> Email :<div class='Headtext'>{{users.email}}</div></h3><br>
+    <h3> Username :<div class='Headtext'>{{users.username}}</div></h3><br>
+    <h3> Registered Date :<div class='Headtext'>{{users.register_data}}</div></h3><br>
+    {% endfor %}
+	</div>
+	<div id="menu3" class="tab-pane fade in active">
+    {% for user_d in user_d %}
+    <h3> Gender:<div class='Headtext'>{{user_d.gender}}</div></h3>
+    {% if user_d.photo %}
+     <h3 class="dp"> Profile Display Picture :   <img src="{{ url_for('.static',filename=user_d['photo']) }}" width="200" height="200"></h3>
+    {% endif %}
+    <h3> Date Of Birth:<div class='Headtext'>{{user_d.date_of_birth}}</div></h3><br>
+    <h3> Religion:<div class='Headtext'>{{user_d.religion}}</div></h3><br>
+    <h3> Mother Tongue :<div class='Headtext'>{{user_d.mother_tongue}}</div></h3><br>
+    {% endfor %}
+	</div>
+	<div id="image" class="tab-pane fade in active">
+		   <h1>Select Profile Image and Upload</h1>
+	<form method = "POST" action = "/upload" enctype = "multipart/form-data">
+	<div class="form-group">
+		<label for="inputFile">Image input</label>
+		<input type="file" name="inputFile">
+	</div>
+	<button type= "submit" class="btn btn-success">Upload</button>
+</form>
+<form method = "POST" action = "/view_upload" enctype = "multipart/form-data">
+<button type= "submit"  class="btn btn-success">View Image</button>
+</form>  
+	
+	
+	</div>
+	<div id="partner_specification" class="tab-pane fade in active">
+    	<div class = 'yo' >
+           <br><a  class = "btn btn-success" href="/insert_partner_info">Insert partner specifications</a><br><br>
+           <a  class = "btn btn-success" href="/update_partner_info">Update partner specifications</a><br><br>
+            <a class = "btn btn-success" href="/finalize">Finalize partner</a><br><br>
+            <a class = "btn btn-danger" href = "/delete_info">Delete partner Specifications</a>
+        </div>   
+        
+    </div>
+    <div id="messages" class="tab-pane fade in active">
+    <a class="btn btn-success" href="/write_message">Compose Message</a><hr><h1>INBOX :</h1><hr>
+
+    
+     {% for messag in messag %}
+    <h3><li>Title:{{messag.title}}</li></h3>
+    <h6> Written by {{messag.susername}} on {{messag.msgdate}}</h6><hr>
+    <h5> {{messag.message}}</h5><br>
+        {% endfor %}
+    </div>
+	<div id="search" class="tab-pane fade in active">
+    <hr><h2>Search Results</h2><hr>
+           {% for yess in yess %}<ul>
+    <h4><li>Partner's Profile_Id  :<div class='Headtext'>{{yess.profile_id}}</div></li></h4>
+    {% if yess.photo %}
+    <h5 class="dp"> Profile Display Picture :   <img src="{{ url_for('.static',filename=yess['photo']) }}" width="200" height="200"></h5>
+    {% endif %}
+    <h5> Age:<div class='Headtext'>{{yess.age}}</div></h5>
+    <h5> Marital Status :<div class='Headtext'>{{yess.marital_status}}</div></h5>
+    <h5> Height:<div class='Headtext'>{{yess.height}}</div></h5>
+    <h5> Mother_Tongue:<div class='Headtext'>{{yess.mother_tongue}}</div></h5>
+    <h5> Religion:<div class='Headtext'>{{yess.religion}}</div></h5>
+    <h5> Education Level:<div class='Headtext'>{{yess.education_level}}</div></h5>
+    <h5> Education Field:<div class='Headtext'>{{yess.education_field}}</div></h5>
+    <h5> Employed As:<div class='Headtext'>{{yess.employed_as}}</div></h5>
+    <h5> Living in (country):<div class='Headtext'>{{yess.living_in_country}}</div></h5>
+    <h5> State:<div class='Headtext'>{{yess.state}}</div></h5>
+    <h5> Smoking:<div class='Headtext'>{{yess.is_smoke}}</div></h5>
+    <h5> Drinking:<div class='Headtext'>{{yess.is_drink}}</div></h5><hr><hr><hr>
+    </ul>{% endfor %}
+	</div>
+	<div id="lookup" class="tab-pane fade in active">
+		<h2>Lookup</h2>
+		<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Name</th>
+		</tr>
+		{% for lookup in lookup %}
+		<tr>
+			<td>{{lookup.id}}</td>
+			<td>{{lookup.username}}</td>
+			<td>{{lookup.name}}</td>
+		</tr>
+		{% endfor%}
+	</table>
+	</div>
+</div>
+
+  
+
+
+<style type="text/css">
+
+	.Headtext{
+		font-family: monospace;
+		margin: 10px;
+		color: green;
+
+	}
+	.yo{
+
+			}
+
+	.dp{
+		float: right;
+	}
+</style>
+
+
+{% endblock %}

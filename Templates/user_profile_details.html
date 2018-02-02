@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+
+
+ {% block body %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+	
+	
+	.form-group{
+
+		opacity: 0.7;
+	}
+	.jumbotron{
+
+		opacity: 0.7;
+	}
+
+	body {
+    background: url("https://preview.ibb.co/bPaKiw/aaron_burden_304587.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+</style>
+
+   
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+<div class="container">
+  <div class="row">
+    <nav class="col-sm-3" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Profile Basics</a></li>
+        <li><a href="#section3">What to Do?</a></li>
+        
+      </ul>
+    </nav>
+    <div class="col-sm-9">
+         <div id="section1">
+        <h1 align = "center">Thanks for Registering. Now let's build your profile.</h1>
+        <div class="jumbotron">
+          <div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="50"
+  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+    50% complete
+  </div>
+</div>
+<h3 align="center">Profile Basics</h3>
+{% from "includes/_formhelpers.html" import render_field %}
+  
+    	
+      <h3>Profile form 1</h3>
+      <form method="POST" action="">
+<div class="form-group">
+	{{render_field(form.username,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.gender,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.date_of_birth,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.religion,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.mother_tongue,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.living_in_country,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.state,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.city,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.marital_status,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.education_level,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.education_field,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.employed_in,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.employed_as,class_="form-control")}}
+</div>
+<div class="form-group">
+	{{render_field(form.annual_income,class_="form-control")}}
+</div>
+<p><input type="submit" class = "btn btn-primary" value="Submit"></p>
+</form>
+</div></div>     
+
+      <div id="section3">         
+        <h1>What to Do?</h1>
+        <p>All the above forms need to be filled with valid infomation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+   
+
+ {% endblock %}
